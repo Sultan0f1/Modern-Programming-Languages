@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Lesson1\**\*.cs" />
+    <Compile Remove="lesson2\**\*.cs" />
+    <Compile Remove="lesson3\**\*.cs" />
+    <Compile Remove="lesson4\**\*.cs" />
+    <EmbeddedResource Remove="Lesson1\**\*.resx" />
+    <EmbeddedResource Remove="lesson2\**\*.resx" />
+    <EmbeddedResource Remove="lesson3\**\*.resx" />
+    <EmbeddedResource Remove="lesson4\**\*.resx" />
+    <None Remove="Lesson1\**\*" />
+    <None Remove="lesson2\**\*" />
+    <None Remove="lesson3\**\*" />
+    <None Remove="lesson4\**\*" />
+  </ItemGroup>
+
+</Project>
