@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "rCgpF9jphuI=",
+  "success": true,
+  "projectFilePath": "/home/runner/work/Modern-Programming-Languages/Modern-Programming-Languages/lesson2/ders3.csproj",
+  "expectedPackageFiles": [
+    "/tmp/codeql-scratch-acc8613910188628/dbs/csharp/working/packages/microsoft.netcore.app.ref/8.0.31/microsoft.netcore.app.ref.8.0.31.nupkg.sha512",
+    "/tmp/codeql-scratch-acc8613910188628/dbs/csharp/working/packages/microsoft.windowsdesktop.app.ref/8.0.31/microsoft.windowsdesktop.app.ref.8.0.31.nupkg.sha512",
+    "/tmp/codeql-scratch-acc8613910188628/dbs/csharp/working/packages/microsoft.aspnetcore.app.ref/8.0.31/microsoft.aspnetcore.app.ref.8.0.31.nupkg.sha512",
+    "/tmp/codeql-scratch-acc8613910188628/dbs/csharp/working/packages/microsoft.netcore.app.host.linux-x64/8.0.31/microsoft.netcore.app.host.linux-x64.8.0.31.nupkg.sha512"
+  ],
+  "logs": []
+}
