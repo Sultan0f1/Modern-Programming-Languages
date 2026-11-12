@@ -12,7 +12,7 @@ namespace Lesson12
         bool[] found = new bool[8];
 
         Random rnd = new Random();
-        Timer timer = new Timer();
+        System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
 
         int first = -1;
         int second = -1;
