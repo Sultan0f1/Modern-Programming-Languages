@@ -42,18 +42,41 @@ namespace Lesson12
             card7.Location = new Point(455, 205);
             card8.Location = new Point(665, 205);
 
-            Button[] cardList = {
-                card1, card2, card3, card4,
-                card5, card6, card7, card8
-            };
+            card1.Size = new Size(160, 130);
+            card2.Size = new Size(160, 130);
+            card3.Size = new Size(160, 130);
+            card4.Size = new Size(160, 130);
+            card5.Size = new Size(160, 130);
+            card6.Size = new Size(160, 130);
+            card7.Size = new Size(160, 130);
+            card8.Size = new Size(160, 130);
 
-            foreach (Button card in cardList)
-            {
-                card.Size = new Size(160, 130);
-                card.Font = new Font("Arial", 24, FontStyle.Bold);
-                card.BackColor = Color.White;
-                card.UseVisualStyleBackColor = false;
-            }
+            card1.Font = new Font("Arial", 24, FontStyle.Bold);
+            card2.Font = new Font("Arial", 24, FontStyle.Bold);
+            card3.Font = new Font("Arial", 24, FontStyle.Bold);
+            card4.Font = new Font("Arial", 24, FontStyle.Bold);
+            card5.Font = new Font("Arial", 24, FontStyle.Bold);
+            card6.Font = new Font("Arial", 24, FontStyle.Bold);
+            card7.Font = new Font("Arial", 24, FontStyle.Bold);
+            card8.Font = new Font("Arial", 24, FontStyle.Bold);
+
+            card1.BackColor = Color.White;
+            card2.BackColor = Color.White;
+            card3.BackColor = Color.White;
+            card4.BackColor = Color.White;
+            card5.BackColor = Color.White;
+            card6.BackColor = Color.White;
+            card7.BackColor = Color.White;
+            card8.BackColor = Color.White;
+
+            card1.UseVisualStyleBackColor = false;
+            card2.UseVisualStyleBackColor = false;
+            card3.UseVisualStyleBackColor = false;
+            card4.UseVisualStyleBackColor = false;
+            card5.UseVisualStyleBackColor = false;
+            card6.UseVisualStyleBackColor = false;
+            card7.UseVisualStyleBackColor = false;
+            card8.UseVisualStyleBackColor = false;
 
             scoreLabel.AutoSize = true;
             scoreLabel.Font = new Font("Arial", 22, FontStyle.Bold);

@@ -5,15 +5,11 @@ namespace Lesson12
 {
     public partial class Form1 : Form
     {
-        Button[] cards;
-        string[] colors = new string[8];
-        bool[] open = new bool[8];
-        bool[] found = new bool[8];
+        Button firstCard = null;
+        Button secondCard = null;
         Random rnd = new Random();
         System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
 
-        int first = -1;
-        int second = -1;
         int score = 0;
         int pairs = 0;
         bool wait = false;
@@ -22,15 +18,14 @@ namespace Lesson12
         {
             InitializeComponent();
 
-            cards = new Button[] {
-                card1, card2, card3, card4,
-                card5, card6, card7, card8
-            };
-
-            for (int i = 0; i < 8; i++)
-            {
-                cards[i].Click += Card_Click;
-            }
+            card1.Click += Card_Click;
+            card2.Click += Card_Click;
+            card3.Click += Card_Click;
+            card4.Click += Card_Click;
+            card5.Click += Card_Click;
+            card6.Click += Card_Click;
+            card7.Click += Card_Click;
+            card8.Click += Card_Click;
 
             newButton.Click += New_Click;
             exitButton.Click += Exit_Click;
@@ -45,35 +40,98 @@ namespace Lesson12
         {
             timer.Stop();
 
-            string[] list = {
-                "Qırmızı", "Qırmızı", "Göy", "Göy",
-                "Yaşıl", "Yaşıl", "Sarı", "Sarı"
-            };
+            card1.Tag = "Qırmızı";
+            card2.Tag = "Qırmızı";
+            card3.Tag = "Göy";
+            card4.Tag = "Göy";
+            card5.Tag = "Yaşıl";
+            card6.Tag = "Yaşıl";
+            card7.Tag = "Sarı";
+            card8.Tag = "Sarı";
 
-            for (int i = 7; i > 0; i--)
-            {
-                int j = rnd.Next(i + 1);
-                string temp = list[i];
-                list[i] = list[j];
-                list[j] = temp;
-            }
+            ShuffleCards();
 
-            for (int i = 0; i < 8; i++)
-            {
-                colors[i] = list[i];
-                open[i] = false;
-                found[i] = false;
-                cards[i].Text = "";
-                cards[i].Enabled = true;
-            }
+            ResetCard(card1);
+            ResetCard(card2);
+            ResetCard(card3);
+            ResetCard(card4);
+            ResetCard(card5);
+            ResetCard(card6);
+            ResetCard(card7);
+            ResetCard(card8);
 
-            first = -1;
-            second = -1;
+            firstCard = null;
+            secondCard = null;
             score = 0;
             pairs = 0;
             wait = false;
             scoreLabel.Text = "Xal: 0";
             markLabel.Text = "";
+        }
+
+        void ShuffleCards()
+        {
+            SwapColors(rnd.Next(8), rnd.Next(8));
+            SwapColors(rnd.Next(8), rnd.Next(8));
+            SwapColors(rnd.Next(8), rnd.Next(8));
+            SwapColors(rnd.Next(8), rnd.Next(8));
+            SwapColors(rnd.Next(8), rnd.Next(8));
+            SwapColors(rnd.Next(8), rnd.Next(8));
+            SwapColors(rnd.Next(8), rnd.Next(8));
+            SwapColors(rnd.Next(8), rnd.Next(8));
+            SwapColors(rnd.Next(8), rnd.Next(8));
+            SwapColors(rnd.Next(8), rnd.Next(8));
+        }
+
+        void SwapColors(int a, int b)
+        {
+            Button cardA = GetCard(a);
+            Button cardB = GetCard(b);
+            object temp = cardA.Tag;
+            cardA.Tag = cardB.Tag;
+            cardB.Tag = temp;
+        }
+
+        Button GetCard(int n)
+        {
+            if (n == 0)
+            {
+                return card1;
+            }
+            else if (n == 1)
+            {
+                return card2;
+            }
+            else if (n == 2)
+            {
+                return card3;
+            }
+            else if (n == 3)
+            {
+                return card4;
+            }
+            else if (n == 4)
+            {
+                return card5;
+            }
+            else if (n == 5)
+            {
+                return card6;
+            }
+            else if (n == 6)
+            {
+                return card7;
+            }
+            else
+            {
+                return card8;
+            }
+        }
+
+        void ResetCard(Button card)
+        {
+            card.Text = "";
+            card.Enabled = true;
         }
 
         void Card_Click(object sender, EventArgs e)
@@ -84,40 +142,32 @@ namespace Lesson12
             }
 
             Button card = (Button)sender;
-            int n = Array.IndexOf(cards, card);
 
-            if (open[n] == true)
+            if (card == firstCard)
             {
                 return;
             }
 
-            if (found[n] == true)
-            {
-                return;
-            }
+            card.Text = card.Tag.ToString();
 
-            cards[n].Text = colors[n];
-            open[n] = true;
-
-            if (first == -1)
+            if (firstCard == null)
             {
-                first = n;
+                firstCard = card;
             }
             else
             {
-                second = n;
+                secondCard = card;
 
-                if (colors[first] == colors[second])
+                if (firstCard.Tag.ToString() == secondCard.Tag.ToString())
                 {
-                    found[first] = true;
-                    found[second] = true;
+                    firstCard.Enabled = false;
+                    secondCard.Enabled = false;
                     score = score + 1;
                     pairs = pairs + 1;
                     scoreLabel.Text = "Xal: " + score;
                     markLabel.Text = "✅";
-
-                    first = -1;
-                    second = -1;
+                    firstCard = null;
+                    secondCard = null;
 
                     if (pairs == 4)
                     {
@@ -137,13 +187,10 @@ namespace Lesson12
         {
             timer.Stop();
 
-            cards[first].Text = "";
-            cards[second].Text = "";
-            open[first] = false;
-            open[second] = false;
-
-            first = -1;
-            second = -1;
+            firstCard.Text = "";
+            secondCard.Text = "";
+            firstCard = null;
+            secondCard = null;
             wait = false;
         }
 
